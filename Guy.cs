@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DogsAtTheRaces
 {
@@ -12,6 +9,10 @@ namespace DogsAtTheRaces
         public string Name;
         public Bet MyBet;
 
+        // Deze misten nog en lossen de foutmeldingen op:
+        public RadioButton MyRadioButton;
+        public Label MyLabel;
+
         public bool PlaceBet(int amount, int dog)
         {
             if (amount <= Cash)
@@ -19,7 +20,7 @@ namespace DogsAtTheRaces
                 MyBet = new Bet();
                 MyBet.Amount = amount;
                 MyBet.Dog = dog;
-                MyBet.Bettor = this; 
+                MyBet.Bettor = this;
 
                 return true;
             }
@@ -29,10 +30,31 @@ namespace DogsAtTheRaces
 
         public void Collect(int winner)
         {
-            if (MyBet == null) return; // Stop meteen als er geen weddenschap is
+            if (MyBet == null) return;
 
             Cash += MyBet.PayOut(winner);
-            MyBet = null; // stop en start de weddenschap opnieuw
+            MyBet = null;
+        }
+
+        // Zorgt ervoor dat de tekst op het scherm netjes ververst wordt
+        public void UpdateLabels()
+        {
+            MyRadioButton.Text = Name + " has " + Cash + " bucks";
+
+            if (MyBet == null)
+            {
+                MyLabel.Text = Name + " hasn't placed a bet";
+            }
+            else
+            {
+                MyLabel.Text = Name + " bets " + MyBet.Amount + " bucks on dog #" + MyBet.Dog;
+            }
+        }
+
+        // Verwijdert de huidige weddenschap
+        public void ClearBet()
+        {
+            MyBet = null;
         }
     }
 }
