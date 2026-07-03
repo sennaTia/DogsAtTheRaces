@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DogsAtTheRaces
 {
     internal class Guy
     {
         public int Cash;
-        public string Name;
-        public Bet MyBet;
+        public string Name = string.Empty;
+        public Bet? MyBet;
+
+        public RadioButton? MyRadioButton;
+        public Label? MyLabel;
 
         public bool PlaceBet(int amount, int dog)
         {
@@ -19,7 +19,7 @@ namespace DogsAtTheRaces
                 MyBet = new Bet();
                 MyBet.Amount = amount;
                 MyBet.Dog = dog;
-                MyBet.Bettor = this; 
+                MyBet.Bettor = this;
 
                 return true;
             }
@@ -29,10 +29,35 @@ namespace DogsAtTheRaces
 
         public void Collect(int winner)
         {
-            if (MyBet == null) return; // Stop meteen als er geen weddenschap is
+            if (MyBet == null) return;
 
             Cash += MyBet.PayOut(winner);
-            MyBet = null; // stop en start de weddenschap opnieuw
+            MyBet = null;
+        }
+
+        public void UpdateLabels()
+        {
+            if (MyRadioButton != null)
+            {
+                MyRadioButton.Text = Name + " has " + Cash + " bucks";
+            }
+
+            if (MyLabel != null)
+            {
+                if (MyBet == null)
+                {
+                    MyLabel.Text = Name + " hasn't placed a bet";
+                }
+                else
+                {
+                    MyLabel.Text = Name + " bets " + MyBet.Amount + " bucks on dog #" + MyBet.Dog;
+                }
+            }
+        }
+
+        public void ClearBet()
+        {
+            MyBet = null;
         }
     }
 }
