@@ -6,12 +6,11 @@ namespace DogsAtTheRaces
     internal class Guy
     {
         public int Cash;
-        public string Name;
-        public Bet MyBet;
+        public string Name = string.Empty;
+        public Bet? MyBet;
 
-        // Deze misten nog en lossen de foutmeldingen op:
-        public RadioButton MyRadioButton;
-        public Label MyLabel;
+        public RadioButton? MyRadioButton;
+        public Label? MyLabel;
 
         public bool PlaceBet(int amount, int dog)
         {
@@ -36,22 +35,26 @@ namespace DogsAtTheRaces
             MyBet = null;
         }
 
-        // Zorgt ervoor dat de tekst op het scherm netjes ververst wordt
         public void UpdateLabels()
         {
-            MyRadioButton.Text = Name + " has " + Cash + " bucks";
-
-            if (MyBet == null)
+            if (MyRadioButton != null)
             {
-                MyLabel.Text = Name + " hasn't placed a bet";
+                MyRadioButton.Text = Name + " has " + Cash + " bucks";
             }
-            else
+
+            if (MyLabel != null)
             {
-                MyLabel.Text = Name + " bets " + MyBet.Amount + " bucks on dog #" + MyBet.Dog;
+                if (MyBet == null)
+                {
+                    MyLabel.Text = Name + " hasn't placed a bet";
+                }
+                else
+                {
+                    MyLabel.Text = Name + " bets " + MyBet.Amount + " bucks on dog #" + MyBet.Dog;
+                }
             }
         }
 
-        // Verwijdert de huidige weddenschap
         public void ClearBet()
         {
             MyBet = null;
