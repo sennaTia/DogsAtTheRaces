@@ -1,3 +1,6 @@
+using System;
+using System.Windows.Forms;
+
 namespace DogsAtTheRaces;
 
 public partial class BettingParlor : Form
@@ -33,7 +36,7 @@ public partial class BettingParlor : Form
             return;
         }
 
-        Guy activeGuy = rb_Guy1.Checked ? _players[0] : (rb_Guy2.Checked ? _players[1] : (rb_Guy3.Checked ? _players[2] : null));
+        Guy? activeGuy = rb_Guy1.Checked ? _players[0] : (rb_Guy2.Checked ? _players[1] : (rb_Guy3.Checked ? _players[2] : null));
 
         if (activeGuy != null)
         {
