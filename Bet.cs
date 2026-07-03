@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DogsAtTheRaces
 {
-    internal class Bet
+  internal class Bet
     {
         public Guy Bettor;
         public int Dog;
@@ -19,6 +19,6 @@ namespace DogsAtTheRaces
 
             // zo niet, geef het bedrag in de min terug
             return -Amount;
-        }
+        }  
     }
 }
