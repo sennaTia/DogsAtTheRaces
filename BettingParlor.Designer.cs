@@ -1,5 +1,4 @@
-﻿
-namespace DogsAtTheRaces
+﻿namespace DogsAtTheRaces
 {
     partial class BettingParlor
     {
@@ -37,6 +36,7 @@ namespace DogsAtTheRaces
             pb_dog3 = new PictureBox();
             pb_dog4 = new PictureBox();
             gB_bettingParlor = new GroupBox();
+            num_betAmount = new NumericUpDown();
             bt_race = new Button();
             lb_guy3BetLabel = new Label();
             lb_guy2BetLabel = new Label();
@@ -58,6 +58,7 @@ namespace DogsAtTheRaces
             ((System.ComponentModel.ISupportInitialize)pb_dog3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pb_dog4).BeginInit();
             gB_bettingParlor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)num_betAmount).BeginInit();
             ((System.ComponentModel.ISupportInitialize)num_dogNumber).BeginInit();
             SuspendLayout();
             // 
@@ -115,6 +116,7 @@ namespace DogsAtTheRaces
             // 
             // gB_bettingParlor
             // 
+            gB_bettingParlor.Controls.Add(num_betAmount);
             gB_bettingParlor.Controls.Add(bt_race);
             gB_bettingParlor.Controls.Add(lb_guy3BetLabel);
             gB_bettingParlor.Controls.Add(lb_guy2BetLabel);
@@ -135,6 +137,16 @@ namespace DogsAtTheRaces
             gB_bettingParlor.TabIndex = 5;
             gB_bettingParlor.TabStop = false;
             gB_bettingParlor.Text = "Betting Parlor";
+            // 
+            // num_betAmount
+            // 
+            num_betAmount.Location = new Point(109, 164);
+            num_betAmount.Name = "num_betAmount";
+            num_betAmount.Size = new Size(59, 31);
+            num_betAmount.TabIndex = 15;
+            num_betAmount.Minimum = 5;   // <-- VERANDERD NAAR 5 MIN
+            num_betAmount.Maximum = 15;  // <-- VERANDERD NAAR 15 MAX
+            num_betAmount.Value = 5;
             // 
             // bt_race
             // 
@@ -185,14 +197,16 @@ namespace DogsAtTheRaces
             // 
             // num_dogNumber
             // 
-            num_dogNumber.Location = new Point(373, 164);
+            num_dogNumber.Location = new Point(455, 164); // <-- IETS MEER NAAR RECHTS
             num_dogNumber.Name = "num_dogNumber";
             num_dogNumber.Size = new Size(59, 31);
             num_dogNumber.TabIndex = 8;
+            num_dogNumber.Minimum = 1;
+            num_dogNumber.Maximum = 4;
             // 
             // bt_bet
             // 
-            bt_bet.Location = new Point(109, 161);
+            bt_bet.Location = new Point(175, 162);
             bt_bet.Name = "bt_bet";
             bt_bet.Size = new Size(63, 34);
             bt_bet.TabIndex = 7;
@@ -203,7 +217,7 @@ namespace DogsAtTheRaces
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(178, 166);
+            label2.Location = new Point(245, 166);
             label2.Name = "label2";
             label2.Size = new Size(198, 25);
             label2.TabIndex = 6;
@@ -247,6 +261,7 @@ namespace DogsAtTheRaces
             rb_Guy3.TabStop = true;
             rb_Guy3.Text = "radioButton3";
             rb_Guy3.UseVisualStyleBackColor = true;
+            rb_Guy3.CheckedChanged += rb_Guy3_CheckedChanged;
             // 
             // rb_Guy2
             // 
@@ -258,6 +273,7 @@ namespace DogsAtTheRaces
             rb_Guy2.TabStop = true;
             rb_Guy2.Text = "radioButton2";
             rb_Guy2.UseVisualStyleBackColor = true;
+            rb_Guy2.CheckedChanged += rb_Guy2_CheckedChanged;
             // 
             // rb_Guy1
             // 
@@ -269,6 +285,7 @@ namespace DogsAtTheRaces
             rb_Guy1.TabStop = true;
             rb_Guy1.Text = "radioButton1";
             rb_Guy1.UseVisualStyleBackColor = true;
+            rb_Guy1.CheckedChanged += rb_Guy1_CheckedChanged;
             // 
             // t_raceTimer
             // 
@@ -294,10 +311,10 @@ namespace DogsAtTheRaces
             ((System.ComponentModel.ISupportInitialize)pb_dog4).EndInit();
             gB_bettingParlor.ResumeLayout(false);
             gB_bettingParlor.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)num_betAmount).EndInit();
             ((System.ComponentModel.ISupportInitialize)num_dogNumber).EndInit();
             ResumeLayout(false);
         }
-
 
         #endregion
 
@@ -314,6 +331,7 @@ namespace DogsAtTheRaces
         private RadioButton rb_Guy2;
         private RadioButton rb_Guy1;
         private NumericUpDown num_dogNumber;
+        private NumericUpDown num_betAmount;
         private Button bt_bet;
         private Label label2;
         private Label lb_guy3BetLabel;

@@ -15,7 +15,7 @@ namespace DogsAtTheRaces
         public int PayOut(int winner)
         {
             // als de hond wint, geef het bedrag terug
-            if (Dog == winner) return Amount;
+            if (Dog == winner) return Amount * 2 ;
 
             // zo niet, geef het bedrag in de min terug
             return -Amount;
